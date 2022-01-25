@@ -1,3 +1,3 @@
 # Wallace is dumb
 print(1)
-#hello
+print("Wallace is dumb")
