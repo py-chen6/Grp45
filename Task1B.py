@@ -5,4 +5,4 @@ print("hello world")
 print("ok")
 print("I go to school by bus")
 def main():
-    print(1+1)
+    print(1+2)
