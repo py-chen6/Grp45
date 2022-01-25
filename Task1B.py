@@ -6,3 +6,4 @@ print("ok")
 print("I go to school by bus")
 def main():
     print(0)
+    print(1+2)
