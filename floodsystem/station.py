@@ -36,7 +36,7 @@ class MonitoringStation:
         self.latest_level = None
 
     def typical_range_consistent(self):
-        if (self.typical_range == None):
+        if (self.typical_range is None):
             return False
         return self.typical_range[0] <= self.typical_range[1]
 
