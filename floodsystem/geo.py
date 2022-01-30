@@ -39,8 +39,20 @@ def rivers_by_station_number(stations, N):
     return temp_list[:N]
 
 def stations_by_distance(stations, p):
+    '''Requirements for Task 1B'''
     temp_list = []
     for station in stations:
         temp_list.append((station.name, station.town, haversine(station.coord, p)))
     sorted_temp_list = sorted_by_key(temp_list, 2)
     return sorted_temp_list
+
+def stations_within_radius(stations, centre, r):
+    '''Requirements for Task 1C'''
+    temp_list = []
+    for station in stations:
+        if haversine(station.coord, centre) > r:
+            pass
+        else:
+            temp_list.append(station.name)
+    temp_list.sort()
+    return temp_list
