@@ -5,8 +5,8 @@
 geographical data.
 
 """
-
-from .utils import sorted_by_key  # noqa
+from utils import sorted_by_key  # noqa
+from haversine import haversine, Unit
 
 def rivers_with_station(stations):
     temp_set = set()
@@ -37,3 +37,10 @@ def rivers_by_station_number(stations, N):
     while (N != len(temp_list) and temp_list[N-1][1] == temp_list[N][1]):
         N += 1
     return temp_list[:N]
+
+def stations_by_distance(stations, p):
+    temp_list = []
+    for station in stations:
+        temp_list.append((station.name, station.town, haversine(station.coord, p)))
+    sorted_temp_list = sorted_by_key(temp_list, 2)
+    return sorted_temp_list
