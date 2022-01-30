@@ -5,7 +5,7 @@ from floodsystem.stationdata import build_station_list
 from floodsystem.geo import stations_by_distance
 
 def run():
-    """Requirements for Task 1B: write a program that prints a list of tuples
+    """Write a program that prints a list of tuples
     (station name, town, distance), for the 10 closest and the 10 furthest stations
     from the Cambridge city centre, (52.2053, 0.1218)"""
 
