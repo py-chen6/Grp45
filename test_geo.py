@@ -15,4 +15,4 @@ def test_stations_within_radius():
  'Cambridge Jesus Lock', 'Comberton', 'Dernford', 'Girton',
  'Haslingfield Burnt Mill', 'Lode', 'Oakington', 'Stapleford']
  
-    assert radius_list == []
+    assert radius_list == required_output
