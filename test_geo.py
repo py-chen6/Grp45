@@ -9,9 +9,11 @@ def test_stations_by_distance():
 
     # Build list of (station name, station town, distance from Cam city centre)
     distance_list = stations_by_distance(stations, (52.2053, 0.1218))
-
-    first_ten = [('Cambridge Jesus Lock', 'Cambridge', 0.8402364350834995), ('Bin Brook', 'Cambridge', 2.502274086951454), ("Cambridge Byron's Pool", 'Grantchester', 4.0720438555077125), ('Cambridge Baits Bite', 'Milton', 5.115589516578674), ('Girton', 'Girton', 5.227070345811418), ('Haslingfield Burnt Mill', 'Haslingfield', 7.044388165868453), ('Oakington', 'Oakington', 7.128249171700346), ('Stapleford', 'Stapleford', 7.265694306995238), ('Comberton', 'Comberton', 7.7350743760373675), ('Dernford', 'Great Shelford', 7.993861351711722)]
-    assert distance_list == first_ten
+    closest_ten = distance_list[:10]
+    closest_ten_rounded = [(name, town, round(dis, 3)) for name, town, dis in closest_ten]
+    
+    required_output = [('Cambridge Jesus Lock', 'Cambridge', 0.840), ('Bin Brook', 'Cambridge', 2.502), ("Cambridge Byron's Pool", 'Grantchester', 4.072), ('Cambridge Baits Bite', 'Milton', 5.116), ('Girton', 'Girton', 5.227), ('Haslingfield Burnt Mill', 'Haslingfield', 7.044), ('Oakington', 'Oakington', 7.128), ('Stapleford', 'Stapleford', 7.266), ('Comberton', 'Comberton', 7.735), ('Dernford', 'Great Shelford', 7.994)]
+    assert required_output == closest_ten_rounded
 
 def test_stations_within_radius():
     '''Test Task1C'''
