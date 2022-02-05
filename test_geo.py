@@ -1,6 +1,9 @@
 from floodsystem.stationdata import build_station_list
 from floodsystem.geo import stations_by_distance
 from floodsystem.geo import stations_within_radius
+from floodsystem.geo import rivers_with_station
+from floodsystem.geo import stations_by_river
+from floodsystem.geo import rivers_by_station_number
 
 def test_stations_by_distance():
     '''Test Task1B'''
@@ -29,3 +32,19 @@ def test_stations_within_radius():
  'Haslingfield Burnt Mill', 'Lode', 'Oakington', 'Stapleford']
  
     assert radius_list == required_output
+
+def test_rivers_with_station():
+    stations = build_station_list()
+    x = rivers_with_station(stations)
+    assert isinstance(x, set)
+
+def test_stations_by_river():
+    stations = build_station_list()   
+    x = stations_by_river(stations)
+    assert isinstance(x, dict)
+
+def test_rivers_by_station_number():
+    stations = build_station_list()
+    x = rivers_by_station_number(stations, 10)
+    assert len(x) == 10
+    assert isinstance(x, list)
