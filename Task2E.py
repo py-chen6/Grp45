@@ -14,6 +14,7 @@ def main():
     top5 = stations[:5]
     for station in top5:
         dates, levels = fetch_measure_levels(station.measure_id, dt=timedelta(days=10))
+        print(len(dates))
         plot_water_levels(station, dates, levels)
 
 
