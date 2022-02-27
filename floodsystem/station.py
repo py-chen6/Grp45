@@ -49,3 +49,13 @@ class MonitoringStation:
         d += "   river:         {}\n".format(self.river)
         d += "   typical range: {}".format(self.typical_range)
         return d
+    
+    def relative_water_level(self):
+        '''Requirements for Task 2B'''
+        if self.latest_level is not None and self.typical_range_consistent():
+            high, low = self.typical_range[1], self.typical_range[0]
+            rel_level = (self.latest_level - low)/(high - low)
+            if rel_level < 10:
+                return rel_level
+        else:
+            return None
