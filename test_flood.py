@@ -1,15 +1,20 @@
 from floodsystem.station import MonitoringStation
 from floodsystem.flood import stations_level_over_threshold
 from floodsystem.flood import stations_highest_rel_level
-from floodsystem.stationdata import build_station_list
 
 def test_stations_level_over_threshold():
-    station1 = MonitoringStation(None, None, "Station 1", None, (0.15, 0.1), None, None)
-    stations = build_station_list
-    for station in stations:
-        if station.name in [
-                'Station 1'
-        ]:
-            temp_list = stations_level_over_threshold(stations, 0.8)
+    statA = MonitoringStation("A", None, None, None, [0.1, 2.0], None, None)
+    statB = MonitoringStation("B", None, None, None, [0.1, 2.0], None, None)
+    statC = MonitoringStation("C", None, None, None, [0.1, 2.0], None, None)
+    statD = MonitoringStation("D", None, None, None, [2.0, 0.1], None, None) # inconsistent case
+    statE = MonitoringStation("E", None, None, None, None, None, None) # inconsistent case
+
+    statA.latest_level = 1
+    statB.latest_level = 2
+    statC.latest_level = 3
     
-    assert temp_list == []
+    stations = [statA, statB, statC, statD, statE]
+    temp_list = stations_level_over_threshold(stations, 2)
+    assert isinstance(temp_list, list) # Check correct type of output
+    assert isinstance(temp_list[0], tuple) # Check correct type of element within the output
+    assert temp_list == [(statC, 3)] # Check that the output is exactly right
