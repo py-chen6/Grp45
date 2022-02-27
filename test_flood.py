@@ -14,7 +14,7 @@ def test_stations_level_over_threshold():
     statC.latest_level = 3
     
     stations = [statA, statB, statC, statD, statE]
-    temp_list = stations_level_over_threshold(stations, 2)
-    assert isinstance(temp_list, list) # Check correct type of output
-    assert isinstance(temp_list[0], tuple) # Check correct type of element within the output
-    assert temp_list == [(statC, 3)] # Check that the output is exactly right
+    rel_list = stations_level_over_threshold(stations, 2)
+    assert isinstance(rel_list, list) # Check correct type of output
+    assert isinstance(rel_list[0], tuple) # Check correct type of element within the output
+    assert rel_list == [(statC, 3)] # Check that the output is exactly right
