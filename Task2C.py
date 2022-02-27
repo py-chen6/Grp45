@@ -13,9 +13,9 @@ def run():
     update_water_levels(stations)
     
     # Prints the names of the 10 stations at which the current relative level is highest, with the relative level alongside
-    for station, highest_rel_level in stations_highest_rel_level(stations, 10):
-        name = station.name
-        print(name, highest_rel_level)
+    rel_list = stations_highest_rel_level(stations, 10)
+    for station in rel_list:
+        print(station.name, station.relative_water_level())
 
 if __name__ == "__main__":
     run()
